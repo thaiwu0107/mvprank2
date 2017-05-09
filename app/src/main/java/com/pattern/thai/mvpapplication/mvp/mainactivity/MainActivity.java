@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.UiUtils;
+import com.pattern.thai.mvpapplication.R;
 import com.pattern.thai.mvpapplication.delegates.DaggerMainComponent;
 import com.pattern.thai.mvpapplication.delegates.MainModule;
 import static com.jess.arms.utils.Preconditions.checkNotNull;
@@ -29,7 +30,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public int initView() {
-        return 0;
+        return R.layout.activity_main;
     }
 
     @Override
