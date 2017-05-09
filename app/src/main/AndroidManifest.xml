@@ -34,7 +34,7 @@
             android:name="com.pattern.thai.mvpapplication.GlobalConfiguration"
             android:value="ConfigModule"/>
 
-        <activity android:name=".mvp.activitys.StartActivity">
+        <activity android:name=".mvp.startavtivity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

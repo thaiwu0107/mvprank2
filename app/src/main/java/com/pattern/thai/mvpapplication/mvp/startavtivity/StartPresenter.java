@@ -1,19 +1,17 @@
-package com.pattern.thai.mvpapplication.mvp.presenters;
+package com.pattern.thai.mvpapplication.mvp.startavtivity;
 
 import android.app.Application;
-
 import com.jess.arms.integration.AppManager;
 import com.jess.arms.di.scope.ActivityScope;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.widget.imageloader.ImageLoader;
-import com.pattern.thai.mvpapplication.mvp.contracts.StartContract;
-
+import com.pattern.thai.mvpapplication.mvp.startavtivity.StartContract;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
-
 import javax.inject.Inject;
 
 
 /**
+ * Presenter的實現
  * Created by ggttoo44 on 2017/5/9.
  */
 

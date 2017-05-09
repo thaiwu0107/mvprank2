@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.pattern.thai.mvpapplication.mvp.activitys.StartActivity">
+    tools:context="com.pattern.thai.mvpapplication.mvp.startavtivity.StartActivity">
 
     <TextView
         android:layout_width="wrap_content"
