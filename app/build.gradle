@@ -26,6 +26,7 @@ android {
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
     }
+
     buildTypes {
         debug {
             buildConfigField "boolean", "LOG_DEBUG", "true"
@@ -59,6 +60,7 @@ buildscript {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':arms')
     // Espresso UI Testing
     androidTestCompile rootProject.ext.dependencies["espresso-core"]
     androidTestCompile rootProject.ext.dependencies["espresso-contrib"]
@@ -66,7 +68,6 @@ dependencies {
 
     provided rootProject.ext.dependencies["javax.annotation"]//dagger2必须依赖jsr250 annotation
     annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]//依赖apt插件
-    compile 'me.jessyan:arms:2.0.1'
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["rxCache"]
     compile rootProject.ext.dependencies["paginate"]

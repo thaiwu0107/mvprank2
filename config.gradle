@@ -33,7 +33,7 @@ ext {
                    daggerVersion            : '2.11-rc2',
                    rxjavaVersion2           : '2.1.0',
                    rxandroidVersion2        : '2.0.1',
-                   guavaVersion             : '21.0',
+                   guavaVersion             : '22.0-rc1-android',
         ]
 
     dependencies = [

@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.Utils;
+import com.google.gson.GsonBuilder;
 import com.jess.arms.base.App;
 import com.jess.arms.base.delegate.AppDelegate;
 import com.jess.arms.di.module.GlobalConfigModule;
@@ -30,11 +31,22 @@ import com.squareup.leakcanary.RefWatcher;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import io.rx_cache2.internal.RxCache;
 import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import timber.log.Timber;
 
 /**
@@ -93,24 +105,40 @@ public class GlobalConfiguration implements ConfigModule {
                         return request;
                     }
                 })
-                .responseErroListener((context1, e) -> {
+                .responseErroListener((Context context1, Exception e)-> {
                     /* 用来提供处理所有错误的监听
                        rxjava必要要使用ErrorHandleSubscriber(默认实现Subscriber的onError方法),此监听才生效 */
                     Timber.w("------------>" + e.getMessage());
                     UiUtils.SnackbarText("net error");
                 })
-                .gsonConfiguration((context12, gsonBuilder) -> {//这里可以自己自定义配置Gson的参数
+                .gsonConfiguration((Context context12, GsonBuilder gsonBuilder)-> {
+                    //这里可以自己自定义配置Gson的参数
                     gsonBuilder
-                            .serializeNulls()//支持序列化null的参数
-                            .enableComplexMapKeySerialization();//支持将序列化key为object的map,默认只能序列化key为string的map
+                            //支持序列化null的参数
+                            .serializeNulls()
+                            //支持将序列化key为object的map,默认只能序列化key为string的map
+                            .enableComplexMapKeySerialization();
                 })
-                .retrofitConfiguration((context1, retrofitBuilder) -> {//这里可以自己自定义配置Retrofit的参数,甚至你可以替换系统配置好的okhttp对象
-//                    retrofitBuilder.addConverterFactory(FastJsonConverterFactory.create());//比如使用fastjson替代gson
+                .retrofitConfiguration((Context context1, Retrofit.Builder retrofitBuilder)-> {
+                    //这里可以自己自定义配置Retrofit的参数,甚至你可以替换系统配置好的okhttp对象
+                    //retrofitBuilder.addConverterFactory(FastJsonConverterFactory.create());
+                    //比如使用fastjson替代gson
+//                    /*
+//                    轉換成String
+//                    * */
+//                    retrofitBuilder.addConverterFactory(StringConverterFactory.create());
+//                    /*
+//                    轉換成RxJava2的形式給使用者
+//                    * */
+//                    retrofitBuilder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());
                 })
-                .okhttpConfiguration((context1, okhttpBuilder) -> {//这里可以自己自定义配置Okhttp的参数
+                .okhttpConfiguration((Context context1, OkHttpClient.Builder okhttpBuilder)-> {
+                    //这里可以自己自定义配置Okhttp的参数
                     okhttpBuilder.writeTimeout(10, TimeUnit.SECONDS);
-                }).rxCacheConfiguration((context1, rxCacheBuilder) -> {//这里可以自己自定义配置RxCache的参数
-            rxCacheBuilder.useExpiredDataIfLoaderNotAvailable(true);
+                })
+                .rxCacheConfiguration((Context context1, RxCache.Builder rxCacheBuilder)-> {
+                    //这里可以自己自定义配置RxCache的参数
+                    rxCacheBuilder.useExpiredDataIfLoaderNotAvailable(true);
         });
     }
 
@@ -210,6 +238,38 @@ public class GlobalConfiguration implements ConfigModule {
                     ((RefWatcher)((App) f.getActivity().getApplication()).getAppComponent().extras().get(RefWatcher.class.getName())).watch(this);
                 }
             });
+    }
+
+    /**
+     * 自定义Converter实现RequestBody到String的转换
+     */
+    private static class StringConverter implements Converter<ResponseBody, String> {
+        private static final StringConverter INSTANCE = new StringConverter();
+
+        @Override
+        public String convert(ResponseBody value) throws IOException {
+            return value.string();
+        }
+    }
+
+    /**
+     * 用于向Retrofit提供StringConverter
+     */
+    private static class StringConverterFactory extends Converter.Factory {
+        private static final StringConverterFactory INSTANCE = new StringConverterFactory();
+        private static StringConverterFactory create() {
+            return INSTANCE;
+        }
+
+        // 我們只關心實現從ResponseBody到String的轉換，所以其它方法可不覆蓋
+        @Override
+        public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
+            if (type == String.class) {
+                return StringConverter.INSTANCE;
+            }
+            //其他類型我們不處理，返回null就行
+            return null;
+        }
     }
 
 }
