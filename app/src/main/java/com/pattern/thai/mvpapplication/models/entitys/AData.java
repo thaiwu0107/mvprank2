@@ -2,8 +2,8 @@ package com.pattern.thai.mvpapplication.models.entitys;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-//import com.google.common.base.Objects;
-//import com.google.common.base.Strings;
+import com.google.common.base.Objects;
+import com.google.common.base.Strings;
 import java.util.UUID;
 
 /**
@@ -82,14 +82,14 @@ public class AData {
         return mTitle;
     }
 
-//    @Nullable
-//    public String getTitleForList() {
-//        if (!Strings.isNullOrEmpty(mTitle)) {
-//            return mTitle;
-//        } else {
-//            return mDescription;
-//        }
-//    }
+    @Nullable
+    public String getTitleForList() {
+        if (!Strings.isNullOrEmpty(mTitle)) {
+            return mTitle;
+        } else {
+            return mDescription;
+        }
+    }
 
     @Nullable
     public String getDescription() {
@@ -104,28 +104,28 @@ public class AData {
         return !mCompleted;
     }
 
-//    public boolean isEmpty() {
-//        return Strings.isNullOrEmpty(mTitle) &&
-//                Strings.isNullOrEmpty(mDescription);
-//    }
+    public boolean isEmpty() {
+        return Strings.isNullOrEmpty(mTitle) &&
+                Strings.isNullOrEmpty(mDescription);
+    }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        AData data = (AData) o;
-//        return Objects.equal(mId, data.mId) &&
-//                Objects.equal(mTitle, data.mTitle) &&
-//                Objects.equal(mDescription, data.mDescription);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hashCode(mId, mTitle, mDescription);
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "Task with title " + mTitle;
-//    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AData data = (AData) o;
+        return Objects.equal(mId, data.mId) &&
+                Objects.equal(mTitle, data.mTitle) &&
+                Objects.equal(mDescription, data.mDescription);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(mId, mTitle, mDescription);
+    }
+
+    @Override
+    public String toString() {
+        return "Task with title " + mTitle;
+    }
 }
