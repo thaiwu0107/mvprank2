@@ -4,6 +4,9 @@ import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
 
 /**
+ * 定義兩邊的接口
+ */
+/**
  * Created by ggttoo44 on 2017/5/9.
  */
 

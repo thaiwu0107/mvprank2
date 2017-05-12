@@ -14,7 +14,10 @@ import com.pattern.thai.mvpapplication.delegates.DaggerLogInComponent;
 import com.pattern.thai.mvpapplication.delegates.LogInModule;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
-
+/**
+ *   @Inject在初始化的過程中,經過inject建造過程之後
+ *   @Inject:inject();之後就可以透過已經標示@Inject的物件拿到實例
+ */
 /**
  * Created by ggttoo44 on 2017/5/9.
  */

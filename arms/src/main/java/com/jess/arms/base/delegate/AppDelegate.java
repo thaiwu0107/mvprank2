@@ -102,8 +102,8 @@ public class AppDelegate implements App {
      */
     private GlobalConfigModule getGlobalConfigModule(Application context, List<ConfigModule> modules) {
 
-        GlobalConfigModule.Builder builder = GlobalConfigModule
-                .builder();
+        GlobalConfigModule.Builder builder = GlobalConfigModule.builder();
+
 
         for (ConfigModule module : modules) {
             module.applyOptions(context, builder);

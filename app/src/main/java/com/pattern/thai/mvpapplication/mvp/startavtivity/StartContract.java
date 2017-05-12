@@ -5,6 +5,9 @@ import com.jess.arms.mvp.IModel;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 /**
+ * 定義兩邊的接口
+ */
+/**
  * 這裡做接口
  * Created by ggttoo44 on 2017/5/9.
  */

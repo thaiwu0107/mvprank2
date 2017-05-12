@@ -126,4 +126,5 @@ dependencies {
     androidTestCompile rootProject.ext.dependencies["recyclerview-v7"]
     androidTestCompile rootProject.ext.dependencies["appcompat-v7"]
     androidTestCompile rootProject.ext.dependencies["design"]
+    androidTestCompile rootProject.ext.dependencies["multitypeadapter"]
 }

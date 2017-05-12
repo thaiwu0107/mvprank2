@@ -2,6 +2,7 @@ package com.jess.arms.di.module;
 
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
 
 import com.jess.arms.http.GlobalHttpHandler;
 import com.jess.arms.http.RequestInterceptor;
@@ -72,7 +73,13 @@ public class ClientModule {
                 .addInterceptor(chain -> chain.proceed(handler.onHttpRequestBefore(chain, chain.request())))
                 .addNetworkInterceptor(intercept);
         if (interceptors != null && interceptors.size() > 0) {//如果外部提供了interceptor的数组则遍历添加
-            interceptors.forEach(builder::addInterceptor);
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                interceptors.forEach(builder::addInterceptor);
+            } else {
+                for(Interceptor interceptor:interceptors) {
+                    builder.addInterceptor(interceptor);
+                }
+            }
         }
         configuration.configOkhttp(application, builder);
         return builder.build();
