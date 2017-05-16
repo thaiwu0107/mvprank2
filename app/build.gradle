@@ -62,7 +62,10 @@ buildscript {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+//    arms這份code只是單純看框架源碼架構去做一些研究跟發現bug用,如果真正要出版直接引用最新的框架即可
+//    修改BUG跟開發時期可以直接引用框架源碼方便調試跟開發
     compile project(':arms')
+//    compile 'me.jessyan:arms:2.0.1'
     // Espresso UI Testing
     androidTestCompile rootProject.ext.dependencies["espresso-core"]
     androidTestCompile rootProject.ext.dependencies["espresso-contrib"]
