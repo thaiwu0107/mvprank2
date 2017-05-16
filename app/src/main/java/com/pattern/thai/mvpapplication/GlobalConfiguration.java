@@ -10,9 +10,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.Utils;
 import com.google.gson.GsonBuilder;
 import com.jess.arms.base.App;
 import com.jess.arms.base.delegate.AppDelegate;
@@ -46,7 +47,6 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import timber.log.Timber;
 
 /**
@@ -157,9 +157,11 @@ public class GlobalConfiguration implements ConfigModule {
             public void onCreate(Application application) {
                 if (BuildConfig.LOG_DEBUG) {//Timber日志打印
                     Timber.plant(new Timber.DebugTree());
+//                    //檢視Dagger2注入效能
+//                    AndroidDevMetrics.initWith(application);
+//                    //leakCanary内存泄露检查
+//                    Utils.init(application.getApplicationContext());
                 }
-                //leakCanary内存泄露检查
-                Utils.init(application.getApplicationContext());
                 ((App) application).getAppComponent().extras().put(RefWatcher.class.getName(), BuildConfig.USE_CANARY ? LeakCanary.install(application) : RefWatcher.DISABLED);
             }
 
@@ -225,7 +227,7 @@ public class GlobalConfiguration implements ConfigModule {
 
             @Override
             public void onActivityDestroyed(Activity activity) {
-
+                Log.e("","");
             }
         });
     }
@@ -233,6 +235,54 @@ public class GlobalConfiguration implements ConfigModule {
     @Override
     public void injectFragmentLifecycle(Context context, List<FragmentManager.FragmentLifecycleCallbacks> lifecycles) {
             lifecycles.add(new FragmentManager.FragmentLifecycleCallbacks() {
+                @Override
+                public void onFragmentPreAttached(final FragmentManager fm, final Fragment f, final Context context) {
+                }
+
+                @Override
+                public void onFragmentAttached(final FragmentManager fm, final Fragment f, final Context context) {
+                }
+
+                @Override
+                public void onFragmentCreated(final FragmentManager fm, final Fragment f, final Bundle savedInstanceState) {
+                }
+
+                @Override
+                public void onFragmentActivityCreated(final FragmentManager fm, final Fragment f, final Bundle savedInstanceState) {
+                }
+
+                @Override
+                public void onFragmentViewCreated(final FragmentManager fm, final Fragment f, final View v, final Bundle savedInstanceState) {
+                }
+
+                @Override
+                public void onFragmentStarted(final FragmentManager fm, final Fragment f) {
+                }
+
+                @Override
+                public void onFragmentResumed(final FragmentManager fm, final Fragment f) {
+                }
+
+                @Override
+                public void onFragmentPaused(final FragmentManager fm, final Fragment f) {
+                }
+
+                @Override
+                public void onFragmentStopped(final FragmentManager fm, final Fragment f) {
+                }
+
+                @Override
+                public void onFragmentSaveInstanceState(final FragmentManager fm, final Fragment f, final Bundle outState) {
+                }
+
+                @Override
+                public void onFragmentViewDestroyed(final FragmentManager fm, final Fragment f) {
+                }
+
+                @Override
+                public void onFragmentDetached(final FragmentManager fm, final Fragment f) {
+                }
+
                 @Override
                 public void onFragmentDestroyed(FragmentManager fm, Fragment f) {
                     ((RefWatcher)((App) f.getActivity().getApplication()).getAppComponent().extras().get(RefWatcher.class.getName())).watch(this);

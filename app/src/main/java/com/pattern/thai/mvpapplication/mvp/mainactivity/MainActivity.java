@@ -29,6 +29,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
+        onBackPressed();
     }
 
     @Override

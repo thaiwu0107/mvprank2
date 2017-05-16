@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+//apply plugin: 'com.frogermcs.androiddevmetrics'
+
 
 android {
 
@@ -71,6 +73,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
     annotationProcessor rootProject.ext.dependencies["rxCache"]
     compile rootProject.ext.dependencies["paginate"]
+    compile rootProject.ext.dependencies["dagger2"]
     compile rootProject.ext.dependencies["support-v4"]
     compile rootProject.ext.dependencies["gson"]
     compile rootProject.ext.dependencies["appcompat-v7"]

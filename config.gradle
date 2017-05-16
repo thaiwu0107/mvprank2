@@ -87,7 +87,7 @@ ext {
                 "rxlifecycle2-components"   : "com.trello.rxlifecycle2:rxlifecycle-components:${version["rxlifecycle2SdkVersion"]}",
                 "rxcache2"                  : "com.github.VictorAlbertos.RxCache:runtime:${version["RxCacheVersion"]}",
                 "rxpermissions2"            : "com.tbruyelle.rxpermissions2:rxpermissions:${version["rxpermissionsVersion"]}",
-                "rxerrorhandler2"           : "me.jessyan:rxerrorhandler:2.0",
+                "rxerrorhandler2"           : "me.jessyan:rxerrorhandler:2.0.1",
                 "rxCache"                   : "com.github.VictorAlbertos.RxCache:compiler:${version["RxCacheVersion"]}",
                 "RxPaparazzo"               : "com.github.miguelbcr:RxPaparazzo:${version["RxPaparazzoVersion"]}",
                 "RxSocialConnect"           : "com.github.VictorAlbertos.RxSocialConnect-Android:core:${version["RxSocialConnectVersion"]}",

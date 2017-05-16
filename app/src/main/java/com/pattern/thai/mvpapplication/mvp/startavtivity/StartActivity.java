@@ -8,6 +8,7 @@ import com.jess.arms.utils.UiUtils;
 import com.pattern.thai.mvpapplication.R;
 import com.pattern.thai.mvpapplication.delegates.DaggerStartComponent;
 import com.pattern.thai.mvpapplication.delegates.StartModule;
+import com.pattern.thai.mvpapplication.mvp.mainactivity.MainActivity;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 /**
@@ -31,6 +32,14 @@ public class StartActivity extends BaseActivity<StartPresenter> implements Start
                 .startModule(new StartModule(this))
                 .build()
                 .inject(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent();
+        intent.setClass(StartActivity.this,MainActivity.class);
+        launchActivity(intent);
     }
 
     @Override
