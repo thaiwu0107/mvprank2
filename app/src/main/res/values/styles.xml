@@ -1,11 +1,64 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="TextLabel" parent="TextAppearance.Design.Hint">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash</item>
+        <item name="android:windowContentTransitions">true</item>
+        <!--<item name="android:windowEnterTransition">@transition/explode</item>-->
+        <!--<item name="android:windowExitTransition">@transition/explode</item>-->
+
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
+        <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>
+    </style>
+
+    <style name="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentTransitions">true</item>
+        <!--<item name="android:windowEnterTransition">@transition/explode</item>-->
+        <!--<item name="android:windowExitTransition">@transition/explode</item>-->
+
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">@transition/changebounds</item>
+        <item name="android:windowSharedElementExitTransition">@transition/changebounds</item>
+    </style>
+
+    <style name="MaterialSearchViewStyle">
+        <!-- Background for the search bar-->
+        <item name="searchBackground">@android:color/white</item>
+
+        <!-- Change voice icon-->
+        <item name="searchVoiceIcon">@drawable/ic_action_voice_search</item>
+
+        <!-- Change clear text icon-->
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close</item>
+
+        <!-- Change up icon-->
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back</item>
+
+        <!-- Change background for the suggestions list view-->
+        <item name="searchSuggestionBackground">@android:color/black</item>
+
+        <!-- Change text color for edit text. This will also be the color of the cursor-->
+        <item name="android:textColor">@android:color/black</item>
+
+        <!-- Change hint text color for edit text-->
+        <item name="android:textColorHint">@android:color/black</item>
+
+        <!-- Hint for edit text-->
+        <item name="android:hint">@string/search_hint</item>
     </style>
 
 </resources>

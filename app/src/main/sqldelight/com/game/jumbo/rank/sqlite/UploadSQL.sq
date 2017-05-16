@@ -1,0 +1,89 @@
+import android.graphics.Bitmap;
+import android.util.Base64;
+import java.util.Calendar;
+
+/**
+*  "msgID":998851,
+    "customerName":"Jason",
+    "machine":"AZ851",
+    "won":99500.30,
+    "date":"20161017 03:10:00",
+    "unlockNumber":"7751",
+    "uploader":"John",
+    "uploadTime":"20161017 03:20:10",
+    "image":"IMAGE_BIN_CODE",
+    "type":1,
+    "threshold":11.223,
+    "memberSerial":"3fsf233"
+
+* */
+CREATE TABLE uploadsql (
+    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    identifi TEXT NOT NULL,
+    customerName TEXT NOT NULL,
+    machine TEXT NOT NULL,
+    won TEXT NOT NULL,
+    date TEXT NOT NULL,
+    unlockNumber TEXT NOT NULL,
+    uploader TEXT NOT NULL,
+    uploadTime TEXT NOT NULL,
+    image TEXT NOT NULL,
+    type INTEGER NOT NULL,
+    threshold REAL NOT NULL,
+    memberSerial TEXT NOT NULL,
+    isQRcode TEXT NOT NULL,
+    serial TEXT NOT NULL
+  );
+
+insert_all_uploadsql:
+INSERT INTO uploadsql( identifi,customerName, machine, won,date,unlockNumber,uploader,uploadTime,image,type,threshold,memberSerial,isQRcode,serial)
+VALUES (?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?);
+
+
+delete_at_identifi:
+delete from uploadsql
+WHERE uploadsql.identifi =?;
+
+delete_all:
+DROP TABLE uploadsql;
+
+select_all:
+select *
+from uploadsql;
+
+select_by_memberSerial:
+select *
+from uploadsql
+where uploadsql.memberSerial = ?;
+
+select_by_threshold:
+select *
+from uploadsql
+where uploadsql.threshold = ?;
+
+select_by_customerName:
+select *
+from uploadsql
+where uploadsql.customerName = ?;
+
+select_by_identifi:
+select *
+from uploadsql
+where uploadsql.identifi = ?;
+
+select_by_date:
+select *
+from uploadsql
+where uploadsql.date = ?;
+
+select_by_uploader:
+select *
+from uploadsql
+where uploadsql.uploader = ?;
+
+select_by_type:
+select *
+from uploadsql
+where uploadsql.type = ?;
+
+

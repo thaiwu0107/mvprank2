@@ -1,0 +1,82 @@
+
+
+
+/**
+    "customerName":"Jason",
+    "machine":"AZ851",
+    "won":99500.30,
+    "date":"20161017 03:10:00",
+    "unlockNumber":"7751",
+    "uploader":"John",
+    "uploadTime":"20161017 03:20:10",
+    "image":"IMAGE_BIN_CODE",
+    "type":1,
+    "threshold":11.223,
+    "memberSerial":"3fsf233"
+
+* */
+
+CREATE TABLE alldatasql (
+    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    customerName TEXT NOT NULL,
+    machine TEXT NOT NULL,
+    won TEXT NOT NULL,
+    date TEXT NOT NULL,
+    uploader TEXT NOT NULL,
+    uploadTime TEXT NOT NULL,
+    type INTEGER NOT NULL
+  );
+
+insert_all_alldatasql:
+INSERT INTO alldatasql( customerName, machine, won,date,uploader,uploadTime,type)
+VALUES ( ?, ?, ?,?,?,?,?);
+
+
+
+select_all:
+select *
+from alldatasql;
+
+delete_all:
+DROP TABLE alldatasql;
+
+select_by_customerName:
+select *
+from alldatasql
+where alldatasql.customerName LIKE '%' || ?1 || '%';
+--OR alldatasql.customerName LIKE ?1 || '%';
+
+select_by_date:
+select *
+from alldatasql
+where alldatasql.date LIKE '%' || ?1 || '%';
+--OR alldatasql.date LIKE ?1 || '%';
+
+select_by_uploader:
+select *
+from alldatasql
+where alldatasql.uploader LIKE '%' || ?1 || '%';
+--OR alldatasql.uploader LIKE ?1 || '%';
+
+select_by_type:
+select *
+from alldatasql
+where alldatasql.type LIKE '%' || ?1 || '%';
+--OR alldatasql.type LIKE ?1 || '%';
+
+select_by_machine:
+select *
+from alldatasql
+where alldatasql.machine LIKE '%' || ?1 || '%';
+
+select_by_won:
+select *
+from alldatasql
+where alldatasql.won LIKE '%' || ?1 || '%';
+--OR alldatasql.won LIKE ?1 || '%';
+
+select_by_uploadTime:
+select *
+from alldatasql
+where alldatasql.uploadTime LIKE '%' || ?1 || '%';
+--OR alldatasql.uploadTime LIKE ?1 || '%';

@@ -2,6 +2,8 @@ package com.pattern.thai.mvpapplication.mvp.startavtivity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.widget.TextView;
+
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.UiUtils;
@@ -10,6 +12,9 @@ import com.pattern.thai.mvpapplication.delegates.DaggerStartComponent;
 import com.pattern.thai.mvpapplication.delegates.StartModule;
 import com.pattern.thai.mvpapplication.mvp.mainactivity.MainActivity;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+
+import butterknife.BindView;
+
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 /**
  *   @Inject在初始化的過程中,經過inject建造過程之後

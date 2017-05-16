@@ -1,0 +1,22 @@
+<tabs>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_home"
+        inActiveColor="#777777"
+        activeColor="#000000" />
+    <tab
+        id="@+id/tab_import_data"
+        icon="@drawable/ic_home"
+        inActiveColor="#777777"
+        activeColor="#000000"/>
+    <tab
+        id="@+id/tab_history"
+        icon="@drawable/ic_home"
+        inActiveColor="#777777"
+        activeColor="#000000"/>
+    <tab
+        id="@+id/tab_unlock"
+        icon="@drawable/ic_home"
+        inActiveColor="#777777"
+        activeColor="#000000"/>
+</tabs>

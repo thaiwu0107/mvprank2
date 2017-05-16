@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="choice">
+        <item >All</item>
+        <item >Name</item>
+        <item >Machine</item>
+        <item >Won</item>
+        <item >Status</item>
+    </string-array>
+    <string-array name="pending_choice">
+        <item >All</item>
+        <item >Name</item>
+        <item >Machine</item>
+        <item >Won</item>
+    </string-array>
+    <string-array name="status_choice">
+        <item >Confirmed</item>
+        <item >Pending</item>
+        <item >Void</item>
+    </string-array>
+</resources>
